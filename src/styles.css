@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+
+
+
+@import "tailwindcss/theme.css"; /* initialiser ce fichier dans le layer theme */ 
+@import "tailwindcss/utilities";   /*  initialiser uniquement theme et utilities car les autres peuvent rentrer en conflit   */
+ 
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+

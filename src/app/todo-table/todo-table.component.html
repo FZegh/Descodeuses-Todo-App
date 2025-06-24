@@ -1,0 +1,39 @@
+<mat-table [dataSource]="todos">
+  <!-- id Definition -->
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+  </ng-container>
+
+  <!-- title Definition -->
+  <ng-container matColumnDef="title">
+    <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.title}} </mat-cell>
+  </ng-container>
+
+  <!-- completed Definition -->
+  <ng-container matColumnDef="completed">
+    <mat-header-cell *matHeaderCellDef> Completed </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.completed}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="priority">
+    <mat-header-cell *matHeaderCellDef> Priority </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.priority}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="dueDate">
+    <mat-header-cell *matHeaderCellDef> DueDate </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.dueDate | date: 'dd/MM/yyyy'}} </mat-cell> <!-- J'ai utilisé la fonction 'date' pour formater la valeur affichée -->
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.description}} </mat-cell>
+  </ng-container>
+
+
+  <!-- Header and Row Declarations -->
+  <mat-header-row *matHeaderRowDef="['id', 'title', 'completed', 'priority', 'dueDate', 'description']"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: ['id', 'title', 'completed', 'priority', 'dueDate', 'description']"></mat-row>
+</mat-table>

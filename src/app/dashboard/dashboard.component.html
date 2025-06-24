@@ -1,0 +1,55 @@
+<!--   Dashboard en version longue:
+
+<div id="liste-blocks" class="grid grid-cols-3 p-4 gap-4">
+  <mat-card id="b1" class="text-white p-4 !bg-blue-500">
+    <div class="flex items-center gap-x-4">
+      <mat-icon id="b1 col1">event</mat-icon>     //event = les icones s'écrivent en minuscule
+      <div id="b1 col2">
+        <div id="titre" class="uppercase text-sm">A faire</div>
+        <div id="valeur" class="text-2xl font-bold">1</div>
+      </div>
+      </div>
+  </mat-card>
+
+
+  <mat-card id="b2" class="text-white p-4 !bg-red-700 rounded-lg shadow-md">
+    <div class="flex items-center gap-x-4">
+      <mat-icon id="b2 col1">warning</mat-icon>
+      <div id="b2 col2">
+        <div id="titre" class="uppercase text-sm opacity-80">Tâches en retard</div>
+        <div id="valeur" class="text-2xl font-bold">5</div>
+      </div>
+    </div>
+  </mat-card>
+
+  <mat-card id="b3" class="text-white p-4 !bg-yellow-500 rounded-lg shadow-md">
+    <div class="flex items-center gap-x-4">
+      <mat-icon id="b3 col1">priority_high</mat-icon>
+      <div id="b3 col2">
+        <div id="titre" class="uppercase text-sm opacity-80">Urgentes</div>
+        <div id="valeur" class="text-2xl font-bold">2</div>
+      </div>
+    </div>
+  </mat-card>
+
+</div>
+
+-->
+
+<div id="liste-blocks" class="grid grid-cols-3 p-4 gap-4">
+  @for (kpi of kpis; track kpi.id) {
+    <mat-card class="text-white p-4" [ngClass]="kpi.color">
+      <div class="flex items-center gap-x-4">
+        <mat-icon>{{ kpi.icon }}</mat-icon> <!-- Les icônes doivent être en minuscule -->
+        <div>
+          <div class="uppercase text-sm">{{ kpi.title }}</div>
+          <div class="text-2xl font-bold">{{ kpi.value }}</div>
+        </div>
+      </div>
+    </mat-card>
+  }
+</div>
+
+
+
+
