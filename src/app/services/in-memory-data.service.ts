@@ -21,6 +21,7 @@ export class InMemoryDataService implements InMemoryDbService {
     const todos : Todo[] = 
     [
       //Urgentes: priority = 1 Et due date = Aujourd'hui
+<<<<<<< HEAD
       {id:1, title:'Appeler Secu', completed: false, priority:'1', dueDate:new Date(2025,5,10).toISOString(), description:null, memberIds: []},
 
       //A faire aujourd'hui: due date = Aujourd'hui
@@ -31,6 +32,18 @@ export class InMemoryDataService implements InMemoryDbService {
 
       //Tache en retard: due date < Aujourd'hui
       {id:4, title:'Envoyer CV', completed: false, priority:null, dueDate:new Date(2025,5,2).toISOString(), description: null, memberIds: []},
+=======
+      {id:1, title:'Appeler Secu', completed: false, priority:'1', dueDate:new Date(2025,5,10).toISOString(), description:null},
+
+      //A faire aujourd'hui: due date = Aujourd'hui
+      {id:2, title:'Envoyer email', completed: false, priority:null, dueDate:new Date(2025,5,10).toISOString(), description: null},
+
+      //Tache en retard: due date < Aujourd'hui
+      {id:3, title:'Declaration impot', completed: false, priority:null, dueDate:new Date(2025,5,1).toISOString(), description:null},
+
+      //Tache en retard: due date < Aujourd'hui
+      {id:4, title:'Envoyer CV', completed: false, priority:null, dueDate:new Date(2025,5,2).toISOString(), description: null},
+>>>>>>> 87cf5ee64b15a1d8b71430e1407f5e4e8926e7ed
     ];
 
 

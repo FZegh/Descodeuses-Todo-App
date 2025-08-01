@@ -1,11 +1,16 @@
 # See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
+<<<<<<< HEAD
 # 📦 Compiled output
+=======
+# Compiled output
+>>>>>>> 87cf5ee64b15a1d8b71430e1407f5e4e8926e7ed
 /dist
 /tmp
 /out-tsc
 /bazel-out
 
+<<<<<<< HEAD
 # 📁 Node.js
 /node_modules
 npm-debug.log
@@ -13,6 +18,14 @@ yarn-error.log
 *.tsbuildinfo
 
 # 🧩 IDEs and editors
+=======
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
+
+# IDEs and editors
+>>>>>>> 87cf5ee64b15a1d8b71430e1407f5e4e8926e7ed
 .idea/
 .project
 .classpath
@@ -21,17 +34,28 @@ yarn-error.log
 .settings/
 *.sublime-workspace
 
+<<<<<<< HEAD
 # 💻 Visual Studio Code
 .vscode/
+=======
+# Visual Studio Code
+.vscode/*
+>>>>>>> 87cf5ee64b15a1d8b71430e1407f5e4e8926e7ed
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+<<<<<<< HEAD
 
 # 🕘 Historique local (extension VS Code)
 .history/*
 
 # 🌀 Miscellaneous
+=======
+.history/*
+
+# Miscellaneous
+>>>>>>> 87cf5ee64b15a1d8b71430e1407f5e4e8926e7ed
 /.angular/cache
 .sass-cache/
 /connect.lock
@@ -40,6 +64,10 @@ yarn-error.log
 testem.log
 /typings
 
+<<<<<<< HEAD
 # 🖥️ System files
+=======
+# System files
+>>>>>>> 87cf5ee64b15a1d8b71430e1407f5e4e8926e7ed
 .DS_Store
 Thumbs.db

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+<<<<<<< HEAD
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/Auth.service';
+=======
+>>>>>>> 87cf5ee64b15a1d8b71430e1407f5e4e8926e7ed
 
 
 //'@' signifie decorateur
@@ -16,14 +19,22 @@ import { AuthService } from '../../services/Auth.service';
 export class LoginComponent implements OnInit{
     // point exclamation pour pouvoir initialiser la variable ultérieurement
   loginForm! : FormGroup;
+<<<<<<< HEAD
   //router: any;
+=======
+  router: any;
+>>>>>>> 87cf5ee64b15a1d8b71430e1407f5e4e8926e7ed
   //j'utilise l'injection automatique de angular pour recuperer
   //un objet form builder qui va construire le formulaire
 
   //private avant formBuilder pour pouvoir acceder a la variable 
   // en dehors du constructeur
 
+<<<<<<< HEAD
   constructor(private formBuilder : FormBuilder, private router : Router, private authService : AuthService) {
+=======
+  constructor(private formBuilder : FormBuilder) {
+>>>>>>> 87cf5ee64b15a1d8b71430e1407f5e4e8926e7ed
 
   }
   
@@ -41,6 +52,7 @@ export class LoginComponent implements OnInit{
  }
 
  onSubmit() {
+<<<<<<< HEAD
 
   if (this.loginForm.valid) {
       const credentials = this.loginForm.value;
@@ -77,3 +89,21 @@ export class LoginComponent implements OnInit{
       //}
 
 //}
+=======
+  if(this.loginForm.valid){
+  console.log(this.loginForm.value);
+ }
+
+ if (this.loginForm.value.username == 'admin@test.com' && this.loginForm.value.password == 'admin')
+    
+
+ {
+  sessionStorage.setItem('isLoggedIn', 'true'); 
+  this.router.navigateByUrl('');
+ }
+
+}
+
+
+}
+>>>>>>> 87cf5ee64b15a1d8b71430e1407f5e4e8926e7ed

@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 Projet Descodeuses
 # Objectif du projet# DecodeusesApp
+=======
+# DecodeusesApp
+>>>>>>> 87cf5ee64b15a1d8b71430e1407f5e4e8926e7ed
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.13.
 

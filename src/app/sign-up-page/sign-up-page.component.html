@@ -26,15 +26,25 @@
     <div id="password-container">
         <mat-form-field>
             <mat-label>Password</mat-label>
+<<<<<<< HEAD
             <input matInput formControlName="password" type="text" placeholder="Password">
+=======
+            <input matInput formControlName="Password" type="text" placeholder="Password">
+>>>>>>> 87cf5ee64b15a1d8b71430e1407f5e4e8926e7ed
         </mat-form-field>
     </div>
     <div>
         <mat-form-field>
             <mat-label>Genre</mat-label>
+<<<<<<< HEAD
             <mat-select formControlName="genre">
                 @for (genre of listGenre; track genre.value) { <!-- track= iditifier si changement en fonction du .value  va calculer les mises a jour (voir listGenre fichier components.ts)-->
                     <mat-option [value]="genre.value">{{genre.text}}</mat-option>  <!-- @for directive conditionnelle --> 
+=======
+            <mat-select>
+                @for (genre of listGenre; track genre.value) { <!-- track= iditifier si changement en fonction du .value  va calculer les mises a jour (voir listGenre fichier components.ts)-->
+                <mat-option [value]="genre.value">{{genre.text}}</mat-option>  <!-- @for directive conditionnelle --> 
+>>>>>>> 87cf5ee64b15a1d8b71430e1407f5e4e8926e7ed
                 }
             </mat-select>
         </mat-form-field>

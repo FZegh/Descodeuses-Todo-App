@@ -4,9 +4,12 @@ import { TodoService } from '../../services/todo.service';
 import { Todo } from '../../models/todo.models';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatCheckboxChange } from '@angular/material/checkbox';
+<<<<<<< HEAD
 import { ProjetService } from '../../services/ProjetService.service';
 import { Projet } from '../../models/projet.model';
 import { Utilisateur } from '../../models/utilisateur.model';
+=======
+>>>>>>> 87cf5ee64b15a1d8b71430e1407f5e4e8926e7ed
 
 @Component({
   selector: 'app-todo-list',
@@ -14,6 +17,7 @@ import { Utilisateur } from '../../models/utilisateur.model';
   templateUrl: './todo-list.component.html',
   styleUrl: './todo-list.component.css'
 })
+<<<<<<< HEAD
 
 
 export class TodoListComponent implements OnInit {
@@ -41,12 +45,23 @@ private getProjetById(id: number): Projet | undefined {
       
 
 
+=======
+export class TodoListComponent implements OnInit {
+  formGroup : FormGroup;
+  todos : Todo[] = [];
+  
+
+  constructor(private fb: FormBuilder, private todoService : TodoService, private snackBar : MatSnackBar){
+    this.formGroup = this.fb.group({
+      title: ['', [Validators.required]]
+>>>>>>> 87cf5ee64b15a1d8b71430e1407f5e4e8926e7ed
     });
   }
 
 
   ngOnInit(): void {
     this.fetchTodo();
+<<<<<<< HEAD
     this.fetchProjets();
   }
 
@@ -58,6 +73,12 @@ private getProjetById(id: number): Projet | undefined {
   }
 
   fetchTodo() {
+=======
+  }
+
+  fetchTodo()
+  {
+>>>>>>> 87cf5ee64b15a1d8b71430e1407f5e4e8926e7ed
     //Communication asynchrone donc il faut s'inscrire pour avoir le retour
     this.todoService.getTodos().subscribe((data) => {
       this.todos = data;
@@ -65,6 +86,7 @@ private getProjetById(id: number): Projet | undefined {
   }
 
 
+<<<<<<< HEAD
   onAddTodo() {
 
     if (this.formGroup.valid) {
@@ -125,10 +147,51 @@ private getProjetById(id: number): Projet | undefined {
 
 
   onCheckChange(event: MatCheckboxChange, todo: Todo) {
+=======
+onAddTodo() {
+  console.log('add')
+  if(this.formGroup.valid) {
+    const formValue = this.formGroup.value;
+
+    const todo : Todo = {
+        id:null, //Id est genere sur le serveur pour cela il est envoye null
+        title:formValue.title, //Seulement title est remplis depuis le formulaire
+        completed:false,
+        priority:null,
+        dueDate:'',
+        description: null
+  
+      };
+      this.todoService.addTodo(todo).subscribe(data=>
+      {
+        //Actualiser la liste apres l'ajout
+        this.fetchTodo();
+      });
+  }
+  }
+
+onDeleteTodo(id: number | null){
+  {
+    if(id == null)
+      return;
+
+    this.todoService.deleteTodo(id).subscribe(() => {
+      this.fetchTodo();
+      this.snackBar.open('Deleted !', '')
+    });
+
+    
+}
+
+}
+
+onCheckChange(event : MatCheckboxChange, todo : Todo) {
+>>>>>>> 87cf5ee64b15a1d8b71430e1407f5e4e8926e7ed
     console.log(event.checked);
     todo.completed = event.checked;
 
     //mettre à jour dans l'api
+<<<<<<< HEAD
     this.todoService.updateTodo(todo).subscribe({
       next: () => {
         this.fetchTodo();
@@ -146,10 +209,16 @@ private getProjetById(id: number): Projet | undefined {
 
 
       
+=======
+    this.todoService.updateTodo(todo).subscribe(data => {
+      console.log(data);
+      this.snackBar.open('Updated !', '');
+>>>>>>> 87cf5ee64b15a1d8b71430e1407f5e4e8926e7ed
     });
 
     
   }
+<<<<<<< HEAD
   onProjectCheckChange(event: MatCheckboxChange, projet: Projet) {
   projet.completed = event.checked;
 
@@ -188,3 +257,6 @@ onResetTodoInput() {
 }
   
 }
+=======
+}
+>>>>>>> 87cf5ee64b15a1d8b71430e1407f5e4e8926e7ed
