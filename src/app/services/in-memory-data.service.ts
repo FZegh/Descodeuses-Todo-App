@@ -18,41 +18,29 @@ export class InMemoryDataService implements InMemoryDbService {
   constructor() { }
 
   createDb() {
-    const todos : Todo[] = 
-    [
-      //Urgentes: priority = 1 Et due date = Aujourd'hui
-<<<<<<< HEAD
-      {id:1, title:'Appeler Secu', completed: false, priority:'1', dueDate:new Date(2025,5,10).toISOString(), description:null, memberIds: []},
+    const todos: Todo[] =
+      [
+        //Urgentes: priority = 1 Et due date = Aujourd'hui
 
-      //A faire aujourd'hui: due date = Aujourd'hui
-      {id:2, title:'Envoyer email', completed: false, priority:null, dueDate:new Date(2025,5,10).toISOString(), description: null, memberIds: []},
+        { id: 1, title: 'Appeler Secu', completed: false, priority: '1', dueDate: new Date(2025, 5, 10).toISOString(), description: null, memberIds: [],  projetId: null,  utilisateurId: 1 },
+        //A faire aujourd'hui: due date = Aujourd'hui
+        { id: 2, title: 'Envoyer email', completed: false, priority: null, dueDate: new Date(2025, 5, 10).toISOString(), description: null, memberIds: [],projetId: null,  utilisateurId: 1},
 
-      //Tache en retard: due date < Aujourd'hui
-      {id:3, title:'Declaration impot', completed: false, priority:null, dueDate:new Date(2025,5,1).toISOString(), description:null, memberIds: []},
+        //Tache en retard: due date < Aujourd'hui
+        { id: 3, title: 'Declaration impot', completed: false, priority: null, dueDate: new Date(2025, 5, 1).toISOString(), description: null, memberIds: [], projetId: null,  utilisateurId: 1 },
 
-      //Tache en retard: due date < Aujourd'hui
-      {id:4, title:'Envoyer CV', completed: false, priority:null, dueDate:new Date(2025,5,2).toISOString(), description: null, memberIds: []},
-=======
-      {id:1, title:'Appeler Secu', completed: false, priority:'1', dueDate:new Date(2025,5,10).toISOString(), description:null},
+        //Tache en retard: due date < Aujourd'hui
+        { id: 4, title: 'Envoyer CV', completed: false, priority: null, dueDate: new Date(2025, 5, 2).toISOString(), description: null, memberIds: [], projetId: null,  utilisateurId: 1 },
 
-      //A faire aujourd'hui: due date = Aujourd'hui
-      {id:2, title:'Envoyer email', completed: false, priority:null, dueDate:new Date(2025,5,10).toISOString(), description: null},
+      ];
 
-      //Tache en retard: due date < Aujourd'hui
-      {id:3, title:'Declaration impot', completed: false, priority:null, dueDate:new Date(2025,5,1).toISOString(), description:null},
 
-      //Tache en retard: due date < Aujourd'hui
-      {id:4, title:'Envoyer CV', completed: false, priority:null, dueDate:new Date(2025,5,2).toISOString(), description: null},
->>>>>>> 87cf5ee64b15a1d8b71430e1407f5e4e8926e7ed
+    const users: User[] = [
+      { id: 1, firstName: 'Marie', lastName: 'Curie', genre: 'Femme' },
+      { id: 2, firstName: 'Marie 2', lastName: 'Curie 2', genre: 'Femme' }
     ];
 
 
-    const users : User[] = [
-      { id:1, firstName:'Marie', lastName:'Curie', genre:'Femme'},
-      { id:2, firstName:'Marie 2', lastName:'Curie 2', genre:'Femme'}
-    ];
-
-
-    return { todos, users}; //
+    return { todos, users }; //
   }
 }

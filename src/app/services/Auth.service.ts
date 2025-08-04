@@ -29,5 +29,9 @@ export class AuthService {
     return localStorage.getItem('token');  // recuperer le token stocké
   }
 
+  getUtilisateurConnecte(): Observable<Utilisateur> {
+  return this.http.get<Utilisateur>('http://localhost:8080/api/utilisateur/me');
+}
+
 
 }

@@ -3,6 +3,7 @@ export interface Utilisateur {
   username: string;
   password?: string;
   role: string;
-  prenom: string;
+  firstname: string;
+  lastname : string;
    
 }

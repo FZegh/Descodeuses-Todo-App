@@ -59,11 +59,9 @@ kpis = [
     this.todoService.getTodos().subscribe((data) => {  //Donc, quand les données arrivent, tu exécutes "this.todos = data;"On stocke les tâches reçues dans this.todos → un tableau.
       this.todos = data;
       //new Date() sans paramètre retourne "today"
-<<<<<<< HEAD
-          let today = new Date();   //fonction constructor va etre appelé
-=======
-      let today = new Date(2025,5,10);   //fonction constructor va etre appelé
->>>>>>> 87cf5ee64b15a1d8b71430e1407f5e4e8926e7ed
+
+      let today = new Date();   //fonction constructor va etre appelé
+
       let countUrgent = 0, countToday = 0, countLate = 0;    //creer 3 variables de type nombre
 
     //Urgentes: priority = 1 Et due date = Aujourd'hui : On veut compter les tâches 
@@ -91,23 +89,18 @@ kpis = [
       //this.kpis[0].value = countToday;
 
     for(let item of this.todos) {
-<<<<<<< HEAD
+
        if(new Date(item.dueDate).toDateString() == today.toDateString())
        countToday ++;
-=======
-        if(new Date(item.dueDate).toDateString() == today.toDateString())
-        countToday ++;
->>>>>>> 87cf5ee64b15a1d8b71430e1407f5e4e8926e7ed
+
       }
     this.kpis[0].value = countToday;
 
 //Tache en retard: due date < Aujourd'hui
 
-<<<<<<< HEAD
+
 //countLate = this.todos.filter( c =>
-=======
-//countLate = this.todos.filter( c=>
->>>>>>> 87cf5ee64b15a1d8b71430e1407f5e4e8926e7ed
+
     
       //new Date(c.dueDate).setHours (0, 0, 0, 0) < new Date (today).setHours(0, 0, 0, 0)).length; //remplace ToDateString par setHours (0, 0, 0, 0)   //Ici, on recrée un nouveau Date(today) → donc on ne touche pas à l’objet today d’origine.
       //ça sert à mettre l’heure à 00:00:00 (minuit), c’est-à-dire :📅 Date : inchangée (exemple : 2025-06-08) 🕛 Heure : remise à zéro (00:00:00)
@@ -115,18 +108,14 @@ kpis = [
       //this.kpis[1].value = countToday;
 
       for(let i = 0; i < this.todos.length;  i++){
-<<<<<<< HEAD
+
         if(new Date (this.todos[i].dueDate) < today){
          countLate = countLate + 1;
       }
       this.kpis[1].value = countLate;
       }
-=======
-        if(new Date (this.todos[i].dueDate) > today)
-         countLate = countLate + 1;
-      }
-  this.kpis[1].value = countLate;
->>>>>>> 87cf5ee64b15a1d8b71430e1407f5e4e8926e7ed
+
+
 
     
   

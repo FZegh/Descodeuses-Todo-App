@@ -2,14 +2,9 @@
 //fichier qui décrit la forme des données
 //semblable a une table de données
 
-<<<<<<< HEAD
 import { Projet } from "./projet.model";
 
 export interface Todo {
-    //memberIds: never[];
-=======
-export interface Todo {
->>>>>>> 87cf5ee64b15a1d8b71430e1407f5e4e8926e7ed
     // | en typescript c'est possibilite d'avoir
     // plusieurs types
 
@@ -22,9 +17,8 @@ export interface Todo {
     priority: string | null;
     //dueDate: Date | null;
     dueDate: string;
-<<<<<<< HEAD
     description?: string | null;
-    memberIds: number[];
+    memberIds?: number[];
     projet?: Projet;
     projetId: number | null; 
     utilisateurId: number;
@@ -35,7 +29,4 @@ export interface Todo {
     
     
 
-=======
-    description: string | null;
->>>>>>> 87cf5ee64b15a1d8b71430e1407f5e4e8926e7ed
 }

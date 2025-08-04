@@ -19,6 +19,7 @@ import { AuthService } from '../../services/Auth.service';
 })
 export class TodoDetailComponent implements OnInit {
   utilisateurs: Utilisateur[] = [];
+  prenom: string | null = null;
 
   currentFruit = new FormControl('');
   selectedFruits: { id: number; nom: string }[] = [];
@@ -61,6 +62,10 @@ export class TodoDetailComponent implements OnInit {
     this.utilisateurService.getUtilisateurConnecte().subscribe({
       next: (utilisateur: Utilisateur) => {
         this.utilisateurConnecte = utilisateur;
+        this.prenom = utilisateur.firstname;
+        console.log('Utilisateur connecté :', utilisateur);
+        console.log('Firstname :', utilisateur.username);
+      
 
         this.todoService.getTodo(todoId).subscribe({
           next: (todoData) => {
@@ -79,7 +84,7 @@ export class TodoDetailComponent implements OnInit {
                   description: [this.todo.description],
                   memberIds: [this.todo.memberIds || []],
                   projetId: [this.todo.projetId || null, Validators.required],
-                  utilisateurId: [{ value: this.utilisateurConnecte.id, disabled: true }, Validators.required]
+                  utilisateurId: [this.utilisateurConnecte.id, Validators.required]
                 });
               },
               error: (err) => {
