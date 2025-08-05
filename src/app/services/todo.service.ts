@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { Todo } from '../models/todo.models';
 import { AuthService } from './Auth.service';
 import { Observable } from 'rxjs';
+import { environment } from '../../environment/environment';
 
 
 //commande pour creer le fichier:
@@ -17,7 +18,7 @@ import { Observable } from 'rxjs';
 })
 export class TodoService {
 
-  private apiURL =  'http://localhost:8080/api/action'      //'api/todos'; change pour communiquer avec le backend
+  private apiURL =  environment.apiUrl + '/api/action'      //'api/todos'; change pour communiquer avec le backend
   //filter: any;
 
    //HttpClient pour communiquer avec le API/Backend appartient au framework Angular

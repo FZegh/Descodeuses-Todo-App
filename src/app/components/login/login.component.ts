@@ -31,10 +31,13 @@ export class LoginComponent implements OnInit {
       this.authService.login(credentials).subscribe({
         next: (res) => {
           sessionStorage.setItem('authToken', res.token);
+          console.log('Token reçu du backend :', res.token);
+          
           sessionStorage.setItem('username', credentials.username);
 
           this.authService.getUtilisateurConnecte().subscribe({
             next: (user) => {
+              console.log('Utilisateur connecté reçu :', user); 
               sessionStorage.setItem('firstname', user.firstname);
                this.router.navigateByUrl('todo-list');
         },

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 import { Utilisateur } from '../models/utilisateur.model';
-import { environment } from '../../environment/environment.prod';
+import { environment } from '../../environment/environment';
 //import { LoginComponent } from '../components/login/login.component'; // adapte ce chemin si besoin
 
 @Injectable({
@@ -16,22 +16,22 @@ export class AuthService {
   
 
   signup(userData: any): Observable<any> {
-    return this.http.post('http://localhost:8080/auth/sign-up', userData);}
+    return this.http.post(`${environment.apiUrl}/auth/sign-up`, userData);}
 
   login(payload: any): Observable<any> {
     return this.http.post<{ token: string }>(`${this.apiUrl}`, payload).pipe(
       tap(response => {
-      sessionStorage.setItem('token', response.token); // 💾 stocker le JWT pour les prochaines requêtes
+      sessionStorage.setItem('authToken', response.token); // 💾 stocker le JWT pour les prochaines requêtes
     })
     );
   }
 
   getToken(): string | null {
-    return localStorage.getItem('token');  // recuperer le token stocké
+    return localStorage.getItem('authToken');  // recuperer le token stocké
   }
 
   getUtilisateurConnecte(): Observable<Utilisateur> {
-  return this.http.get<Utilisateur>('http://localhost:8080/api/utilisateur/me');
+  return this.http.get<Utilisateur>(`${environment.apiUrl}/api/utilisateur/me`);
 }
 
 
