@@ -27,10 +27,11 @@ export class SignUpPageComponent implements OnInit {
     this.SignUpForm = this.formBuilder.group({
 
 
-    lastname : ['', [Validators.required, Validators.name]],
-    firstname : ['', [Validators.required, Validators.name]],
-    username : ['', [Validators.required, Validators.name]],
-    password : ['', [Validators.required, Validators.name]],
+    lastname : ['', [Validators.required]],
+    firstname : ['', [Validators.required]],
+    username : ['', [Validators.required]],
+    password : ['', [Validators.required, Validators.minLength(8)]],
+    genre: ['', Validators.required],
     
 
 
