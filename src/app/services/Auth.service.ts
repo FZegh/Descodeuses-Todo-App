@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 import { Utilisateur } from '../models/utilisateur.model';
-import { environment } from '../../environment/environment';
+import { environment } from '../../environments/environment';
 //import { LoginComponent } from '../components/login/login.component'; // adapte ce chemin si besoin
 
 @Injectable({

@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { Todo } from '../models/todo.models';
 import { AuthService } from './Auth.service';
 import { Observable } from 'rxjs';
-import { environment } from '../../environment/environment';
+import { environment } from '../../environments/environment';
 
 
 //commande pour creer le fichier:
