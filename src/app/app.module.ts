@@ -37,6 +37,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { authInterceptor } from './auth/auth.interceptor';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { authInterceptor } from './auth/auth.interceptor';
     UserListComponent,
     TodoDetailComponent,
     TodoTableComponent,
-    DashboardComponent
+    DashboardComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
@@ -66,8 +68,6 @@ import { authInterceptor } from './auth/auth.interceptor';
     MatSelectModule,
     MatCardModule,
     MatCheckboxModule,
-    HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 200 }),
     MatSnackBarModule,
     MatDatepickerModule,
     MatTableModule,
