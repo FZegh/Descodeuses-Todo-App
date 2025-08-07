@@ -8,6 +8,7 @@ import { ProjetService } from '../../services/ProjetService.service';
 import { Projet } from '../../models/projet.model';
 import { Utilisateur } from '../../models/utilisateur.model';
 
+
 @Component({
   selector: 'app-todo-list',
   standalone: false,
@@ -35,17 +36,20 @@ export class TodoListComponent implements OnInit {
     private fb: FormBuilder,
     private todoService: TodoService,
     private snackBar: MatSnackBar,
-    private projetService: ProjetService
+    private projetService: ProjetService,
+   
   ) {
     this.formGroup = this.fb.group({
       title: ['', [Validators.required]],
-      projetId: [null, Validators.required],
+      projetId: [null],
     });
   }
 
   ngOnInit(): void {
     this.fetchTodo();
     this.fetchProjets();
+    //this.utilisateurConnecte = this.authService.getCurrentUser(); // ← ligne manquante !
+ // console.log("👤 Utilisateur connecté :", this.utilisateurConnecte);
   }
 
   fetchProjets() {
@@ -73,7 +77,7 @@ export class TodoListComponent implements OnInit {
         dueDate: '',
         description: null,
         memberIds: [],
-        projetId: formValue.projetId,
+        projetId: null,
         utilisateurId: this.utilisateurConnecte.id
       };
       this.todoService.addTodo(todo).subscribe(data => {

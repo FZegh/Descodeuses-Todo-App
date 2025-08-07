@@ -27,7 +27,7 @@ export class AuthService {
   }
 
   getToken(): string | null {
-    return localStorage.getItem('authToken');  // recuperer le token stocké
+    return sessionStorage.getItem('authToken');  // recuperer le token stocké
   }
 
   getUtilisateurConnecte(): Observable<Utilisateur> {
