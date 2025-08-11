@@ -4,7 +4,7 @@ import { FormControl} from "@angular/forms";
 
 export interface Userform {
     id:FormControl<number | null>;
-    firsName:FormControl<string | null>; // null : champ optionnel
+    firtsName:FormControl<string | null>; // null : champ optionnel
     lastName:FormControl<string | null>;
-    genre: FormControl<boolean | null>;
+    genre: FormControl<string | null>;
 }

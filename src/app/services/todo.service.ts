@@ -2,7 +2,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Todo } from '../models/todo.models';
-import { AuthService } from './Auth.service';
+import { AuthService } from './auth.service';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
@@ -53,7 +53,7 @@ private getAuthHeaders(): { headers: HttpHeaders } {
   }
   
  getUsers(): Observable<any[]> {
-  return this.http.get<any[]>('/api/users', this.getAuthHeaders());
+  return this.http.get<any[]>(environment.apiUrl + '/api/users', this.getAuthHeaders());
 }
 
 

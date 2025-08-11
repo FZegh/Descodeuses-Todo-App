@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../services/Auth.service';
+import { AuthService } from '../services/auth.service';
 
 
 @Component({
@@ -32,10 +32,10 @@ export class SignUpPageComponent implements OnInit {
     username : ['', [Validators.required]],
     password : ['', [Validators.required, Validators.minLength(8)]],
     genre: ['', Validators.required],
-    
+     role: ['user'] // rôle par défaut
 
 
-    })
+    });
   }
 
 

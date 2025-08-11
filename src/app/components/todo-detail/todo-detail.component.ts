@@ -9,7 +9,6 @@ import { ProjetService } from '../../services/ProjetService.service';
 import { UtilisateurService } from '../../services/utilisateur.service';
 import { Projet } from '../../models/projet.model';
 import { Utilisateur } from '../../models/utilisateur.model';
-import { AuthService } from '../../services/Auth.service';
 
 @Component({
   selector: 'app-todo-detail',

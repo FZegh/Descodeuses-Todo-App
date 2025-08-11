@@ -31,7 +31,7 @@ export class AuthService {
   }
 
   getUtilisateurConnecte(): Observable<Utilisateur> {
-  return this.http.get<Utilisateur>(`${environment.apiUrl}/api/utilisateur/me`);
+  return this.http.get<Utilisateur>(`${environment.apiUrl}/api/user/me`);
 }
 
 
