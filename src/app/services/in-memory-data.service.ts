@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { InMemoryDbService } from 'angular-in-memory-web-api';
+import { InMemoryDbService, ResponseOptions, STATUS } from 'angular-in-memory-web-api';
 import { Todo } from '../models/todo.models';
 import { User } from '../models/user.models';
 
@@ -36,11 +36,22 @@ export class InMemoryDataService implements InMemoryDbService {
 
 
     const users: User[] = [
-      { id: 1, firstName: 'Marie', lastName: 'Curie', genre: 'Femme' },
-      { id: 2, firstName: 'Marie 2', lastName: 'Curie 2', genre: 'Femme' }
+      { id: 1, username: 'marie.curie',email: 'test@example.com', firstName: 'Marie', lastName: 'Curie', genre: 'Femme', role: 'user' },
+      { id: 2,username: 'mcurie',email: 'test2@example.com', firstName: 'Marie 2', lastName: 'Curie 2', genre: 'Femme', role: 'user' }
     ];
 
 
     return { todos, users }; //
   }
+
+ requestInterceptor(req: Request) {
+    const authHeader = req.headers.get('Authorization');
+
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      throw new Error('401 Unauthorized: Token manquant ou invalide');
+    }
+
+    return req;
+  }
+
 }

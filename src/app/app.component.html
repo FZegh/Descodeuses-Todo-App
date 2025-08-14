@@ -1,3 +1,7 @@
+
+
+
+
 <mat-sidenav-container>
     <!--  variale template commence par '#' pour declencher le menu dans la fonction click   -->
   <mat-sidenav #sidenav mode="side">
@@ -6,7 +10,9 @@
       <a mat-list-item routerLink="sign-up-page">Sign up</a>
       <a mat-list-item routerLink="">To-do list</a>
       <a mat-list-item>Profile</a>
+      @if(authService.isAdmin) {
       <a mat-list-item routerLink="userlist">Utilisateurs</a>
+      }
       <a mat-list-item routerLink="todo-table">Todo-table</a>
        <a mat-list-item routerLink="dashboard">Dashboard</a>
       
@@ -27,7 +33,8 @@
           </mat-toolbar>
         </div>
         <div id="div-router" class="flex-1">
-          <router-outlet />
+          <router-outlet></router-outlet>
+
         </div>
     </div>
   </mat-sidenav-content>

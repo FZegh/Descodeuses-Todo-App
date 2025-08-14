@@ -13,5 +13,6 @@ export interface TodoForm {
     completed: FormControl<boolean | null>;
     priority: FormControl<string | null>;
     dueDate: FormControl<Date | null>;
+    memberIds: FormControl<number[] | null>;
 
 }

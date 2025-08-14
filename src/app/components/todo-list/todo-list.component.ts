@@ -6,7 +6,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { ProjetService } from '../../services/ProjetService.service';
 import { Projet } from '../../models/projet.model';
-import { Utilisateur } from '../../models/utilisateur.model';
+import { User } from '../../models/user.models';
+import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../services/user.service';
+
 
 
 @Component({
@@ -16,11 +19,12 @@ import { Utilisateur } from '../../models/utilisateur.model';
   styleUrl: './todo-list.component.css'
 })
 export class TodoListComponent implements OnInit {
-  utilisateurConnecte!: Utilisateur;
+  utilisateurConnecte!: User;
   formGroup: FormGroup;
   todos: Todo[] = [];
   projets: Projet[] = [];
   users: any[] = [];
+  
 
   private getProjetById(id: number): Projet | undefined {
     return this.projets.find(p => p.id === id);
@@ -37,6 +41,9 @@ export class TodoListComponent implements OnInit {
     private todoService: TodoService,
     private snackBar: MatSnackBar,
     private projetService: ProjetService,
+    private authService: AuthService,
+    private userService: UserService
+    
    
   ) {
     this.formGroup = this.fb.group({
@@ -46,7 +53,27 @@ export class TodoListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+this.authService.getUtilisateurConnecte().subscribe(
+  (user: User) => {
+    this.utilisateurConnecte = user;
+    console.log("Utilisateur connecté :", user);
     this.fetchTodo();
+
+    this.userService.getUsers().subscribe(users => {
+  this.users = users;
+});
+
+
+  },
+  (err) => {
+    console.error("Erreur récupération utilisateur connecté", err);
+  }
+);
+
+
+
+    
     this.fetchProjets();
     //this.utilisateurConnecte = this.authService.getCurrentUser(); // ← ligne manquante !
  // console.log("👤 Utilisateur connecté :", this.utilisateurConnecte);
@@ -167,4 +194,11 @@ export class TodoListComponent implements OnInit {
   onResetTodoInput() {
     this.formGroup.get('title')?.reset();
   }
+
+
+  getUserNameById(id: number): string {
+  const user = this.users.find(u => u.id === id);
+  return user ? `${user.firstName} ${user.lastname}` : 'Inconnu';
+}
+
 }

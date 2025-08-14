@@ -31,6 +31,13 @@
               <mat-icon>delete</mat-icon>
             </button>
           </div>
+
+           <mat-chip-listbox>
+          @for (id of todo.memberIds; track id) {
+            <mat-chip>{{ getUserNameById(id) }}</mat-chip>
+          }
+           </mat-chip-listbox>
+
         </mat-list-item>
       }
     </mat-list>

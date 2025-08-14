@@ -8,7 +8,7 @@ import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { ProjetService } from '../../services/ProjetService.service';
 import { UtilisateurService } from '../../services/utilisateur.service';
 import { Projet } from '../../models/projet.model';
-import { Utilisateur } from '../../models/utilisateur.model';
+import { User } from '../../models/user.models';
 
 @Component({
   selector: 'app-todo-detail',
@@ -17,7 +17,7 @@ import { Utilisateur } from '../../models/utilisateur.model';
   styleUrl: './todo-detail.component.css'
 })
 export class TodoDetailComponent implements OnInit {
-  utilisateurs: Utilisateur[] = [];
+  utilisateurs: User[] = [];
   prenom: string | null = null;
 
   currentFruit = new FormControl('');
@@ -34,7 +34,13 @@ export class TodoDetailComponent implements OnInit {
   todo!: Todo;
   formGroup!: FormGroup;
   projets: Projet[] = [];
-  utilisateurConnecte!: Utilisateur;
+  utilisateurConnecte!: User;
+  users: User[] = []; 
+
+  getUserNameById(id: number): string {
+    const user = this.users.find(u => u.id === id);
+    return user ? `${user.firstName} ${user.lastName}` : 'Inconnu';
+  }
 
   PriorityNumber = [
     { number: 1, value: '1' },
@@ -59,12 +65,20 @@ export class TodoDetailComponent implements OnInit {
     console.log('ID récupéré :', todoId);
 
     this.utilisateurService.getUtilisateurConnecte().subscribe({
-      next: (utilisateur: Utilisateur) => {
+      next: (utilisateur: User) => {
         this.utilisateurConnecte = utilisateur;
-        this.prenom = utilisateur.firstname;
+        this.prenom = utilisateur.firstName;
         console.log('Utilisateur connecté :', utilisateur);
         console.log('Firstname :', utilisateur.username);
       
+        this.utilisateurService.getAll().subscribe({
+          next: (userList) => {
+            this.users = userList;
+          },
+          error: (err) => {
+            console.error('Erreur lors du chargement des utilisateurs', err);
+          }
+        });
 
         this.todoService.getTodo(todoId).subscribe({
           next: (todoData) => {

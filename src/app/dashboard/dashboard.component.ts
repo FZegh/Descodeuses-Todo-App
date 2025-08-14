@@ -45,8 +45,10 @@ kpis = [
 
 
 //ngOnInit() :C’est une méthode spéciale d’Angular.Elle est appelée automatiquement quand le composant est initialisé (quand il apparaît à l’écran).C’est l’endroit idéal pour dire : "va chercher les données !".
-
+role: string = '';
   ngOnInit(): void {   
+
+    this.role = sessionStorage.getItem('role') || '';
     this.fetchTodo();  //Ça déclenche la récupération de la liste des to-dos.
   }
 

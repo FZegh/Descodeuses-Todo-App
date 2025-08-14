@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 
+
 @Component({
   selector: 'app-sign-up-page',
   standalone: false,
@@ -30,9 +31,10 @@ export class SignUpPageComponent implements OnInit {
     lastname : ['', [Validators.required]],
     firstname : ['', [Validators.required]],
     username : ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.email]],
     password : ['', [Validators.required, Validators.minLength(8)]],
     genre: ['', Validators.required],
-     role: ['user'] // rôle par défaut
+    role: ['user'] // rôle par défaut
 
 
     });
@@ -51,7 +53,7 @@ export class SignUpPageComponent implements OnInit {
       this.authService.signup(formData).subscribe({
         next: (response) => {
           console.log('Inscription réussie :', response);
-          this.router.navigate(['/todo-list']); // 👈 ou toute autre route existante
+          this.router.navigate(['/dashboard']); // 👈 ou toute autre route existante
         },
         error: (error) => {
           console.error('Erreur lors de l’inscription :', error);

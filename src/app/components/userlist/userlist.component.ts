@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { User } from '../../models/user.models';
 import { UserService } from '../../services/user.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { User } from '../../models/user.models';
 
 @Component({
   selector: 'app-user-list',
@@ -9,29 +10,49 @@ import { UserService } from '../../services/user.service';
   templateUrl: './userlist.component.html',
   styleUrl: './userlist.component.css'
 })
-export class UserListComponent implements OnInit{
+export class UserListComponent implements OnInit {
 
-  formGroup : FormGroup;
+  formGroup: FormGroup;
 
-  users : User[] = [];
-  
+  users: User[] = [];
 
-  constructor(private fb: FormBuilder, private userService : UserService){
+
+  constructor(private fb: FormBuilder, private userService: UserService, private snackBar: MatSnackBar ) {
     this.formGroup = this.fb.group({
-      title:['', [Validators.required]]
+      username: ['', [Validators.required]],
+      email: ['', [Validators.required, , Validators.email]],
+      password: ['', Validators.required],
+      lastname: [''],
+      firstname: [''],
+      genre: [''],
+      role: ['ROLE_USER']
+
     });
   }
   ngOnInit(): void {
-    this.userService.getUsers().subscribe((data)=>{
+    this.userService.getUsers().subscribe((data: User[]) => {
+
+
       this.users = data;
     })
   }
 
 
 
-  onAddUser(){
-    if(this.formGroup.valid){
+  onAddUser() {
+    if (this.formGroup.valid) {
       const formValue = this.formGroup.value;
+
+      this.userService.registerUser(formValue).subscribe({
+        next: () => {
+          this.snackBar.open('Utilisateur ajouté ✅', 'Fermer', { duration: 3000 });
+          this.formGroup.reset();
+          this.userService.getUsers().subscribe(data => this.users = data);
+        },
+
+        error: (err) => {
+          this.snackBar.open('Erreur : ' + err.error.message, 'Fermer', { duration: 3000 });
+        }});
     }
   }
 }

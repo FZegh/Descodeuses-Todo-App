@@ -1,23 +1,56 @@
 <mat-card class="h-full w-2xl flex flex-col">
     <form [formGroup]="formGroup" (ngSubmit)="onAddUser()">
-        <div id="todo-bar-saisie" class="flex gap-2 m-4">
-            <mat-form-field appearance="outline" class="flex-1">
-                <input matInput formControlName="title" placeholder="Nouvel utilisateur">
+        <div id="todo-bar-saisie" class="flex flex-col gap-4 m-4">
+
+            <mat-form-field appearance="outline" class="w-full">
+                <input matInput formControlName="username" placeholder="Nouvel utilisateur">
             </mat-form-field>
-            <button mat-fab type="submit">
-                <mat-icon>add</mat-icon>
+
+            <mat-form-field appearance="outline" class="w-full">
+                <input matInput formControlName="email" placeholder="Email">
+            </mat-form-field>
+
+
+            <mat-form-field appearance="outline" class="w-full">
+                <input matInput type="password" formControlName="password" placeholder="Mot de passe">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="w-full">
+                <input matInput formControlName="firstname" placeholder="Prénom">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="w-full">
+                <input matInput formControlName="lastname" placeholder="Nom">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="w-full">
+                <mat-label>Genre</mat-label>
+                <mat-select formControlName="genre">
+                    <mat-option value="Homme">Homme</mat-option>
+                    <mat-option value="Femme">Femme</mat-option>
+                    <mat-option value="Autre">Autre</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+
+            <button mat-fab type="submit" color="primary">
+                <mat-icon>add</mat-icon> Créer l'utilisateur
             </button>
         </div>
     </form>
-    <div id="user-liste">
+    <div id="user-liste" class="px-4">
         <mat-list>
-            @for(use of users; track use.id) {
-                <mat-list-item>
-                    {{ use.firstName }}, {{ use.lastName }}, {{ use.genre }}
-                </mat-list-item>
+            @for(user of users; track user.id) {
+            <mat-list-item class="flex flex-col items-start py-2">
+                <div class="font-semibold text-lg">
+                    {{ user.firstName }}, {{ user.lastName }}
+                </div>
+                <div class="text-sm text-gray-600 mb-2">
+                    {{ user.username }} | {{ user.email }} | 🎭 {{ user.role }} | 🧬 {{ user.genre }}
+                </div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
             }
         </mat-list>
     </div>
 </mat-card>
-
-
