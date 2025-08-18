@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       const credentials = this.loginForm.value;
       this.authService.login(credentials).subscribe({
-        next: (res) => {
+        next: (res : any) => {
           // Stocke le token et le username
           sessionStorage.setItem('authToken', res.token);
           sessionStorage.setItem('username', credentials.username);
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
 
           // Récupère les infos complètes de l'utilisateur
           this.authService.getUtilisateurConnecte().subscribe({
-            next: (user) => {
+            next: (user : any) => {
 
               console.log('Utilisateur connecté reçu :', user);
                // Stockage dans sessionStorage pour réutilisation dans toute l'app
@@ -67,13 +67,13 @@ export class LoginComponent implements OnInit {
 
             },
 
-            error: (err) => {
+            error: (err : any) => {
               console.error('Erreur récupération utilisateur', err);
               alert('Impossible de récupérer les infos utilisateur');
             }
           });
         },
-        error: (err) => {
+        error: (err : any) => {
           console.error('Erreur de connexion', err);
           alert('Identifiants invalides ou serveur indisponible');
         },

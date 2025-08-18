@@ -50,7 +50,7 @@ export class UserListComponent implements OnInit {
           this.userService.getUsers().subscribe(data => this.users = data);
         },
 
-        error: (err) => {
+        error: (err : any) => {
           this.snackBar.open('Erreur : ' + err.error.message, 'Fermer', { duration: 3000 });
         }});
     }

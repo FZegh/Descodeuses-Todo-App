@@ -66,7 +66,7 @@ this.authService.getUtilisateurConnecte().subscribe(
 
 
   },
-  (err) => {
+  (err : any) => {
     console.error("Erreur récupération utilisateur connecté", err);
   }
 );
@@ -150,7 +150,7 @@ this.authService.getUtilisateurConnecte().subscribe(
           { duration: 3000 }
         );
       },
-      error: (err) => {
+      error: (err : any) => {
         console.error('Erreur lors de la mise à jour', err);
         this.snackBar.open('Erreur lors de la mise à jour.', '', { duration: 3000 });
       }

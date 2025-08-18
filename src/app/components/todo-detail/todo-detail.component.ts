@@ -75,7 +75,7 @@ export class TodoDetailComponent implements OnInit {
           next: (userList) => {
             this.users = userList;
           },
-          error: (err) => {
+          error: (err : any) => {
             console.error('Erreur lors du chargement des utilisateurs', err);
           }
         });
@@ -100,19 +100,19 @@ export class TodoDetailComponent implements OnInit {
                   utilisateurId: [this.utilisateurConnecte.id, Validators.required]
                 });
               },
-              error: (err) => {
+              error: (err : any) => {
                 console.error('Erreur lors du chargement des projets', err);
                 this.snackbar.open("Erreur chargement projets", '', { duration: 2000 });
               }
             });
           },
-          error: (err) => {
+          error: (err : any) => {
             console.error('Erreur lors du chargement du Todo', err);
             this.snackbar.open("Erreur chargement Todo", '', { duration: 2000 });
           }
         });
       },
-      error: (err) => {
+      error: (err : any) => {
         console.error('Erreur lors de la récupération de l’utilisateur', err);
       }
     });
@@ -145,7 +145,7 @@ export class TodoDetailComponent implements OnInit {
           this.snackbar.open('updated', '', { duration: 1000 });
           this.router.navigate(['/todo-table']);
         },
-        error: (err) => {
+        error: (err : any) => {
           console.error('Erreur lors de la mise à jour', err);
           this.snackbar.open('Erreur lors de la mise à jour', '', { duration: 2000 });
         }
