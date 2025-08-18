@@ -51,11 +51,11 @@ export class SignUpPageComponent implements OnInit {
       const formData = this.SignUpForm.value;
 
       this.authService.signup(formData).subscribe({
-        next: (response) => {
+        next: (response : any) => {
           console.log('Inscription réussie :', response);
           this.router.navigate(['/dashboard']); // 👈 ou toute autre route existante
         },
-        error: (error) => {
+        error: (error : any) => {
           console.error('Erreur lors de l’inscription :', error);
         }
       });
