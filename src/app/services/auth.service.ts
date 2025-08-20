@@ -11,6 +11,8 @@ import { environment } from '../../environments/environment';
 export class AuthService {
   private apiUrl = environment.apiUrl  + '/auth/login';
 
+  isAdmin: boolean = false;
+
   constructor(private http: HttpClient) {}
 
   
